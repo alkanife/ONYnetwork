@@ -7,13 +7,30 @@
 <!-- JAVASCRIPT BRANCH -->
 
 <h3>Navbar</h3>
-
-<a href="" id="changeCurrencyEuro">CHANGER EN EURO (défaut)</a>
+<!-- changer monnaie-->
+<button type="button" class="btn btn-primary" id="changeCurrencyEuro">CHANGER EN EURO (défaut)</button>
 <br>
-<a href="" id="changeCurrencyDollar">CHANGER EN DOLLAR</a>
+<button type="button" class="btn btn-primary" id="changeCurrencyDollar">CHANGER EN DOLLAR</button>
+<p id="moneyUse"></p>
 <br>
-<a href="" id="adOffers">OFFRES PROMO</a>
 
+<!-- modale promo-->
+<button type="button" class="btn btn-primary" id="adOffers" data-bs-toggle="modal" data-bs-target="#modalPromo">OFFRES PROMO</button>
+
+<div class="modal fade show" id="modalPromo" tabindex="-1" aria-labelledby="modalPromoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <p> offre du moment</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---->
 <h3>Web</h3>
 
 <button type="button" class="btn btn-primary" id="webClassicDetails">DÉTAILS (CLASSIC)</button>
