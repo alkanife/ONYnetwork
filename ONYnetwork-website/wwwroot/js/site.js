@@ -47,12 +47,11 @@ window.onload = creatStorage();
 window.onload = recupBouton();
 
 /* récupération des boutons et ajout des events listener */
-//////// tu en ai ici
 function recupBouton() {
     //récupération des boutons d'ajout au panier
     let ajoutPanierProd = document.getElementsByClassName("ajoutPanierProd");
     // ajout des event listener aux boutons
-    for (i = 0; i++; i <= ajoutPanierProd.length) {
+    for (let i = 0; i < ajoutPanierProd.length; i++) {
         ajoutPanierProd[i].addEventListener("click", (event) => { ajoutPanier(event) });
     }
 }
@@ -67,7 +66,8 @@ function creatStorage() {
                 let nomProd = tabListeProd[i][0];
                 let descProduit = tabListeProd[i][1];
                 let prixProduit = tabListeProd[i][2];
-                insert(i, nomProd, descProduit, prixProduit);
+                let numIdProd = tabListeProd[i][3];
+                insert(numIdProd, nomProd, descProduit, prixProduit);
             }
         }
     } else {
@@ -83,9 +83,32 @@ function ajoutPanier(event) {
     //récupération du tableau dans le local storage
     let tabListeProd = JSON.parse(localStorage.getItem("tabSave"));
 
-    //recupération des données
+    //recupération du numéro de l'id
     let idBtn = event.target.id;
     let numIdProd = idBtn.substr(idBtn.length - 1);
+
+
+    //boucle pour parcourir le tableau sauvegarder et trouver le produit
+    for (let i = 1; i < tabListeProd.length; i++) {
+        if (numIdProd === tabListeProd[i][3]) {
+            //recupération de la quantité du produit
+            let quantProdPasse = parseInt(tabListeProd[numIdProd][1]);
+            // ajout d'un produit
+            quantProdPasse = quantProdPasse + 1;
+
+            // modification de la quantité dans le tableau
+            tabListeProd[numIdProd][1] = quantProdPasse;
+
+            //modification de la quantité dans l'html
+            document.getElementById("quanProdPanier" + numIdProd).innerHTML = quantProdPasse;
+
+            //stockage des modification dans localStorage
+            localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
+            return;
+        }
+    }
+
+    //recupération des données
 
     let tabProd = [];
     let nomProd = document.getElementById("nomProduit" + numIdProd).innerHTML;
@@ -93,7 +116,7 @@ function ajoutPanier(event) {
     let prixProduit = document.getElementById("prixProduit" + numIdProd).innerHTML;
 
     //ajout dans un tableau des valeurs entrées
-    tabProd.push(nomProd, decription, prixProduit);
+    tabProd.push(nomProd, decription, prixProduit, numIdProd);
     tabListeProd.push(tabProd);
 
     //utilisation de la fonction d'insertion
@@ -159,18 +182,23 @@ function ajout(event) {
     //recupération des données
     let idBtn = event.target.id;
     let numIdProd = idBtn.substr(idBtn.length - 1);
-    let quantProdPasse = parseInt(tabListeProd[numIdProd][1]);
-    // ajout d'un produit
-    quantProdPasse = quantProdPasse + 1;
 
-    // modification de la quantité dans le tableau
-    tabListeProd[numIdProd][1] = quantProdPasse;
+    //boucle pour parcourir le tableau sauvegarder et trouver le produit
+    for (let i = 1; i < tabListeProd.length; i++) {
+        if (numIdProd === tabListeProd[i][3]) {
+            let quantProdPasse = parseInt(tabListeProd[i][1]);
+            // ajout d'un produit
+            quantProdPasse = quantProdPasse + 1;
+            // modification de la quantité dans le tableau
+            tabListeProd[i][1] = quantProdPasse;
 
-    //modification de la quantité dans l'html
-    document.getElementById("quanProdPanier" + numIdProd).innerHTML = quantProdPasse;
+            //modification de la quantité dans l'html
+            document.getElementById("quanProdPanier" + numIdProd).innerHTML = quantProdPasse;
 
-    //stockage des modification dans localStorage
-    localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
+            //stockage des modification dans localStorage
+            localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
+        }
+    }
 }
 
 /* fonction soustraction d'un produit avec le bouton moins */
@@ -181,58 +209,49 @@ function soustraction(event) {
     //recupération des données
     let idBtn = event.target.id;
     let numIdProd = idBtn.substr(idBtn.length - 1);
-    let quantProdPasse = parseInt(tabListeProd[numIdProd][1]);
-    // soustraction d'un produit
-    quantProdPasse = quantProdPasse - 1;
 
-    //vérification qu'il reste au moins un produit
-    if (quantProdPasse > 0) {
-        // modification de la quantité dans le tableau
-        tabListeProd[numIdProd][1] = quantProdPasse;
+    //boucle pour parcourir le tableau sauvegarder et trouver le produit
+    for (let i = 1; i < tabListeProd.length; i++) {
+        if (numIdProd === tabListeProd[i][3]) {
+            let quantProdPasse = parseInt(tabListeProd[i][1]);
+            // soustraction d'un produit
+            quantProdPasse = quantProdPasse - 1;
 
-        //modification de la quantité dans l'html
-        document.getElementById("quanProdPanier" + numIdProd).innerHTML = quantProdPasse;
+            //vérification qu'il reste au moins un produit
+            if (quantProdPasse > 0) {
+                // modification de la quantité dans le tableau
+                tabListeProd[i][1] = quantProdPasse;
 
-        //stockage des modification dans localStorage
-        localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
-    } else {
-        suppression(event);
+                //modification de la quantité dans l'html
+                document.getElementById("quanProdPanier" + numIdProd).innerHTML = quantProdPasse;
+
+                //stockage des modification dans localStorage
+                localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
+            } else {
+                suppression(event);
+            }
+        }
     }
 }
 
 /*fonction pour supprimer un produit*/
 function suppression(event) {
     // récupération du tableau dans le localStorage
-    let tabListeProduit = JSON.parse(localStorage.getItem("tabSave"));
+    let tabListeProd = JSON.parse(localStorage.getItem("tabSave"));
 
     // récuprétation de du numéro de l'id du bouton
     let idBtn = event.target.id;
     let numIdProd = idBtn.substr(idBtn.length - 1);
-
     // récupération de l'element a supprimer
     let produit = document.getElementById("produitPanier" + numIdProd);
-    let y = 1;
+    //suppression dans le DOM
     produit.remove();
-    tabListeProd.splice(numIdProd, 1);
-    for (x = 1; x < tabListeProd.length + 1; x++) {
-        let elemID = document.getElementById(x);
-        let elemName = document.getElementsByName(x);
-        if (elemID != null) {
-            if (y >= numIdProd) {
-                elemID.setAttribute("id", y);
-                elemName[0].innerHTML = y;
-                for (z = 0; z <= elemName.length; z) {
-                    if (elemName[z] != undefined) {
-                        elemName[z].setAttribute("name", y);
-                    } else {
-                        break;
-                    }
-                }
-                y++;
-            } else {
-                y++;
-            }
+
+    //recupération de l'élément à supprimer dans le tableau de sauvegarde
+    for (let i = 1; i < tabListeProd.length; i++) {
+        if (numIdProd === tabListeProd[i][3]) {
+            tabListeProd.splice(i, 1);
         }
+        localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
     }
-    localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
 }
