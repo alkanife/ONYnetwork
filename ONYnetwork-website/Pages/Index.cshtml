@@ -18,11 +18,8 @@
 <button type="button" class="btn btn-primary" id="adOffers" data-bs-toggle="modal" data-bs-target="#modalPromo">OFFRES PROMO</button>
 
 <div class="modal fade show" id="modalPromo" tabindex="-1" aria-labelledby="modalPromoLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div id="intModalPromo" class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
             <div class="modal-body">
                 <p> offre du moment</p>
             </div>
@@ -30,28 +27,106 @@
     </div>
 </div>
 
-<!---->
+<!--decriptif des produits et ajout des produit au panier-->
 <h3>Web</h3>
 
-<button type="button" class="btn btn-primary" id="webClassicDetails">DÉTAILS (CLASSIC)</button>
-<button type="button" class="btn btn-primary" id="webClassicAdd">AJOUTER AU PANIER (CLASSIC)</button>
+<button type="button" class="btn btn-primary" id="details1" data-bs-toggle="modal" data-bs-target="#modalProduit1">DÉTAILS (CLASSIC)</button>
+<!--
+    <button type="button" class="btn btn-primary" id="ajoutPanierProd1">AJOUTER AU PANIER (CLASSIC)</button>
+-->
 
-<button type="button" class="btn btn-primary" id="webPremiumDetails">DÉTAILS (PREMIUM)</button>
-<button type="button" class="btn btn-primary" id="webPremiumAdd">AJOUTER AU PANIER (PREMIUM)</button>
+<button type="button" class="btn btn-primary" id="details2" data-bs-toggle="modal" data-bs-target="#modalProduit2">DÉTAILS (PREMIUM)</button>
+<button type="button" class="btn btn-primary" id="ajoutPanierProd2">AJOUTER AU PANIER (PREMIUM)</button>
 
-<button type="button" class="btn btn-primary" id="webUltimateDetails">DÉTAILS (ULTIME)</button>
-<button type="button" class="btn btn-primary" id="webUltimateAdd">AJOUTER AU PANIER (ULTIME)</button>
+<button type="button" class="btn btn-primary" id="details3" data-bs-toggle="modal" data-bs-target="#modalProduit3">DÉTAILS (ULTIME)</button>
+<button type="button" class="btn btn-primary" id="ajoutPanierProd3">AJOUTER AU PANIER (ULTIME)</button>
+
 
 <h3>Cloud</h3>
 
-<button type="button" class="btn btn-primary" id="cloudClassicDetails">DÉTAILS (CLASSIC)</button>
-<button type="button" class="btn btn-primary" id="cloudClassicAdd">AJOUTER AU PANIER (CLASSIC)</button>
+<button type="button" class="btn btn-primary" id="details4" data-bs-toggle="modal" data-bs-target="#modalProduit4">DÉTAILS (CLASSIC)</button>
+<button type="button" class="btn btn-primary" id="ajoutPanierProd4">AJOUTER AU PANIER (CLASSIC)</button>
 
-<button type="button" class="btn btn-primary" id="cloudPremiumDetails">DÉTAILS (PREMIUM)</button>
-<button type="button" class="btn btn-primary" id="cloudPremiumAdd">AJOUTER AU PANIER (PREMIUM)</button>
+<button type="button" class="btn btn-primary" id="details5" data-bs-toggle="modal" data-bs-target="#modalProduit5">DÉTAILS (PREMIUM)</button>
+<button type="button" class="btn btn-primary" id="ajoutPanierProd5">AJOUTER AU PANIER (PREMIUM)</button>
 
-<button type="button" class="btn btn-primary" id="cloudUltimateDetails">DÉTAILS (ULTIME)</button>
-<button type="button" class="btn btn-primary" id="cloudUltimateAdd">AJOUTER AU PANIER (ULTIME)</button>
+<button type="button" class="btn btn-primary" id="details6 data-bs-toggle=" modal" data-bs-target="#modalProduit6" ">DÉTAILS (ULTIME)</button>
+<button type="button" class="btn btn-primary" id="ajoutPanierProd6">AJOUTER AU PANIER (ULTIME)</button>
+
+<!-- ajout des modales pour la description des produits.-->
+<div class="modal fade show" id="modalProduit1" tabindex="-1" aria-labelledby="modalProduit1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis turpis commodo, hendrerit libero sed, aliquam felis. Vivamus condimentum tincidunt aliquet. Morbi dui justo, commodo id quam eget, euismod molestie arcu. Maecenas laoreet, risus sit amet semper pellentesque, ante leo pellentesque velit, in condimentum leo mauris at elit. Cras sit amet augue ut ipsum convallis commodo non non lacus. Nunc tempus posuere nisl, non varius massa. Pellentesque commodo ligula risus, in lacinia diam congue quis. Curabitur semper ligula a dolor tincidunt fermentum. Duis id enim at ipsum aliquet venenatis nec ac mi.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Panier-->
+<!--Bouton modale panier-->
+
+<br>
+<br>
+
+<p id="nomProduit1">Serveur 1</p>
+<p id="quanProduit1"> 1 </p>
+<p id="prixProduit1">230€</p>
+<button type="button" class="btn btn-primary ajoutPanierProd" id="ajoutPanierProd1">AJOUTER AU PANIER</button>
+<br>
+<br>
+
+<p id="nomProduit2">Serveur 2</p>
+<p id="quanProduit2"> 1 </p>
+<p id="prixProduit2">930€</p>
+<button type="button" class="btn btn-primary ajoutPanierProd" id="ajoutPanierProd2">AJOUTER AU PANIER</button>
+<br>
+<br>
+
+<p>
+    <button type="button" class="btn btn-primary" id="panier" data-bs-toggle="modal" data-bs-target="#modlePanier">Panier</button>
+</p>
+
+<!--Modale panier-->
+
+<div class="modal fade show" id="modlePanier" tabindex="-1" aria-labelledby="modlePanier" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <p id="titreModalePanier">Panier</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--contenu du panier-->
+
+<ul id="listePanier">
+    <li>
+        <div id="produitPanier" class="produitPanier">
+            <div class="nomProd"> produits </div>
+            <div class="quantProd"> quantité </div>
+            <div class="ajoutProd"> + </div>
+            <div class="soutraireProd"> - </div>
+            <div class="suppProd"> SUPP </div>
+            <div> prix</div>
+        </div>
+    </li>
+    </li>
+    <li>
+        <p>total</p>
+    </li>
+</ul>
+
 
 
 <!-- --------- -->
