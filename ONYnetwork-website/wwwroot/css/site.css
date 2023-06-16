@@ -41,3 +41,18 @@ body {
     flex-direction: row;
     justify-content: space-around;
 }
+
+/*soulier lien*/
+.lienSouligner {
+    border-bottom: 2px solid black;
+    border-radius: 5px;
+}
+
+/*effet promotion*/
+.visibility {
+    visibility: visible;
+}
+.hiden {
+    visibility: hidden;
+}
+

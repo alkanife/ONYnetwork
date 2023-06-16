@@ -87,20 +87,20 @@ function ajoutPanier(event) {
     let idBtn = event.target.id;
     let numIdProd = idBtn.substr(idBtn.length - 1);
 
-
     //boucle pour parcourir le tableau sauvegarder et trouver le produit
     for (let i = 1; i < tabListeProd.length; i++) {
         if (numIdProd === tabListeProd[i][3]) {
+
             //recupération de la quantité du produit
-            let quantProdPasse = parseInt(tabListeProd[numIdProd][1]);
+            let quantProdPasse = parseInt(tabListeProd[i][1]);
             // ajout d'un produit
             quantProdPasse = quantProdPasse + 1;
 
             // modification de la quantité dans le tableau
-            tabListeProd[numIdProd][1] = quantProdPasse;
+            tabListeProd[i][1] = quantProdPasse;
 
             //modification de la quantité dans l'html
-            document.getElementById("quanProdPanier" + numIdProd).innerHTML = quantProdPasse;
+            document.getElementById("quanProdPanier" + i).innerHTML = quantProdPasse;
 
             //stockage des modification dans localStorage
             localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
@@ -121,7 +121,6 @@ function ajoutPanier(event) {
 
     //utilisation de la fonction d'insertion
     insert(numIdProd, nomProd, decription, prixProduit);
-
     //stockage des modification dans localStorage
     localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
 }
@@ -254,4 +253,76 @@ function suppression(event) {
         }
         localStorage.setItem("tabSave", JSON.stringify(tabListeProd));
     }
+}
+
+
+/*ajout de la fonctionalité de soulignement des liens dans la nav barre */
+
+
+/* appel de la focntion d'ajout effet*/
+window.onload = recupLien();
+
+/* ajoute des event listener */
+function recupLien() {
+    //récupération des liens 
+    let tabLien = document.getElementsByClassName("lien");
+    // ajout des event listener aux boutons
+    for (let i = 0; i < tabLien.length; i++) {
+        tabLien[i].addEventListener("mouseover", (event) => { ajoutSoulignement(event) });
+        tabLien[i].addEventListener("mouseleave", (event) => { supSoulignement(event) });
+    }
+}
+
+/*déclaration des fonctions de suvole des liens*/
+/* ajout du soulignement */
+function ajoutSoulignement(event) {
+    event.target.classList.add("lienSouligner");
+}
+/*suppression du soulignement */
+function supSoulignement(event) {
+    event.target.classList.remove("lienSouligner");
+}
+
+
+/* effet promotion*/
+/*appel de la fonction au chargement*/
+window.onload = () => { loop() };
+
+
+function loop(finish) { 
+    let time = 1500;
+    let timeOut;
+    animTexte(timeOut);
+    timeOut = setTimeout(animTexte, time);
+    time += time;
+}
+
+function animTexte(timeOut) {
+    clearTimeout(timeOut);
+    // récupération du text à animer
+    let animationTexte = document.getElementById("animationTexte");
+    //ajout de la classe visible
+    animationTexte.classList.add("visibility");
+
+    //création du délai d'affichage des lettres
+    let delay = 200;
+    // création du délais de commencement
+    let delay_start = 2;
+    //déclaration des variables utile à la fonction 
+    let contents;
+    let letters;
+
+    // ajout des lettres composent le message dans un tableau
+    contents = animationTexte.textContent.trim();
+    animationTexte.textContent = "";
+    letters = contents.split("");
+
+    //application pour toutes les tettres du tableau récupéré
+    letters.forEach(function (letter, index) {
+        // creation du minuteur de l'affichage
+        setTimeout(function () {
+            animationTexte.textContent += letter;
+        }, delay_start + delay * index);
+    });
+    delay_start += delay * letters.length;
 }
