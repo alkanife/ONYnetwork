@@ -371,6 +371,37 @@ body {
     border: none;
 }
 
+.bagItemQuantitySelector {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #0c0d29;
+    color: #fff;
+    border: 1px solid #0c0d29;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+.bagItemQuantitySelector:hover {
+    background-color: #0c0d29;
+    border: 1px solid #0c0d29;
+    color: white;
+}
+
+.bagItemQuantitySelector:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #0c0d29;
+}
+
+.bagItemQuantitySelector:active {
+    background-color: #0c0d29;
+    color: white;
+    border: 1px solid #0c0d29;
+}
+
+.bagItemQuantity {
+    padding-right: 3px;
+    padding-left: 3px;
+}
 
 
 
