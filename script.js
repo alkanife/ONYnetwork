@@ -10,8 +10,7 @@ window.onload = () => {
     updateItemsButtons();
     recupLien(); /* appel de la focntion d'ajout effet*/
 
-    //loop();
-    testAnim();
+    loop();
 }
 
 
@@ -307,41 +306,19 @@ function retrieveCookies() {
     }
 }
 
-
-/* TEST ANIMATION */
-function testAnim() {
-    let textElement = document.getElementById("promoLink");
-    let content = textElement.innerText.split('');
-    textElement.innerText = '';
-    let i = 0;
-
-    let interval = setInterval(() => {
-        let c = content[i];
-
-        console.log(c)
-
-        if (c === undefined) {
-            clearInterval(interval);
-            return;
-        }
-
-        textElement.textContent += c;
-        i++;
-    }, 40)
-}
-
-
 /* effet promotion*/
 /*appel de la fonction au chargement*/
 function loop(finish) {
-    let time = 1500;
+    let time = 5000;
     let timeOut;
     animTexte(timeOut);
     timeOut = setTimeout(animTexte, time);
     time += time;
 }
-
+let x=1.
 function animTexte(timeOut) {
+    console.log("test"+x)
+    x++;
     clearTimeout(timeOut);
     // récupération du text à animer
     let animationTexte = document.getElementById("promoLink");
