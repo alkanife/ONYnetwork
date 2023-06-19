@@ -14,7 +14,7 @@ body {
 
 
 #header {
-    background: url('img/header.png') no-repeat top center fixed;
+    background: url('../img/header.png') no-repeat top center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
