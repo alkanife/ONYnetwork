@@ -10,8 +10,7 @@ window.onload = () => {
     updateItemsButtons();
     recupLien(); /* appel de la focntion d'ajout effet*/
 
-    //loop();
-    testAnim();
+    loop();
 }
 
 
@@ -306,30 +305,6 @@ function retrieveCookies() {
         localStorage.setItem('ad', "true")
     }
 }
-
-
-/* TEST ANIMATION */
-function testAnim() {
-    let textElement = document.getElementById("promoLink");
-    let content = textElement.innerText.split('');
-    textElement.innerText = '';
-    let i = 0;
-
-    let interval = setInterval(() => {
-        let c = content[i];
-
-        console.log(c)
-
-        if (c === undefined) {
-            clearInterval(interval);
-            return;
-        }
-
-        textElement.textContent += c;
-        i++;
-    }, 40)
-}
-
 
 /* effet promotion*/
 /*appel de la fonction au chargement*/
