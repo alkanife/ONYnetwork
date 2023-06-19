@@ -111,26 +111,31 @@ function updateBagModal() {
         items.forEach((value, key, map) => {
             /*insertion du texte dans html, j'ai utiliser "insertAdjacentHTML" plutôt que appendChild,
             car je trouve cela plus lisible et manipulable. Je ne sais pas quelle méthode est la plus rapide en revanche*/
+
+            let price = value.price + currencyToSymbol(currentCurrency);
+
             bagBody.insertAdjacentHTML('beforeend', `
-                <div class="row mb-4 d-flex justify-content-between align-items-center">
-                    <div class="col-5">
-                      <h5 class="text-black mb-0">${value.name}</h5>
-                      <p style="margin-bottom: 5px">Prix unitaire : ${value.price + currencyToSymbol(currentCurrency)}</p>
-                      <a href="#nuu" onclick="removeFromBag('${key}', 0)" class="delete-from-bag">Supprimer du panier</a>  
+                <div class="row d-flex justify-content-between align-items-center">
+                    <h5 class="text-black mb-0">${value.name}</h5>
+                    <div class="col-4 col-sm-4">
+                      <p class="d-none d-sm-block" style="margin-bottom: 5px">Prix unitaire : ${price}</p>
+                      
+                      <p class="d-block d-sm-none" style="margin-bottom: 5px">${price}/unité</p>
                     </div>
                     
-                    <div class="col-2 d-flex">
+                    <div class="col-4 col-sm-3 text-center">
                         <h5 class="mb-0">
-                            <a href="#nu" class="bagItemQuantitySelector" onclick="removeFromBag('${key}', 1)">- </a>
-                            ${value.quantity}
-                            <a href="#nu" class="bagItemQuantitySelector" onclick="addToBag(document.getElementById('${'addBag'+key}'), '${key}')"> +</a>
+                            <a href="#nu" class="bagItemQuantitySelector" onclick="removeFromBag('${key}', 1)">-</a>
+                            <span class="bagItemQuantity">${value.quantity}</span>
+                            <a href="#nu" class="bagItemQuantitySelector" onclick="addToBag(document.getElementById('${'addBag'+key}'), '${key}')">+</a>
                         </h5>
                     </div>
                     
-                    <div class="col-3">
+                    <div class="col-3 col-sm-3">
                       <h5 class="mb-0">${value.price * value.quantity + currencyToSymbol(currentCurrency)}</h5>
                     </div>
-                  </div>
+                </div>
+                <a href="#nuu" onclick="removeFromBag('${key}', 0)" class="delete-from-bag">Supprimer du panier</a>  
                 <hr>
             `);
         })
@@ -138,15 +143,11 @@ function updateBagModal() {
         // Ajout total
         bagBody.insertAdjacentHTML('beforeend', `
             <div class="row mb-4 d-flex justify-content-between align-items-center">
-                <div class="col-5">
+                <div class="col-8 col-md-4">
                   <h5 class="text-black mb-0">Total TTC</h5>
                 </div>
                 
-                <div class="col-2 d-flex">
-                
-                </div>
-                
-                <div class="col-3">
+                <div class="col-3 col-sm-3">
                   <h5 class="mb-0">${getTotalPrice() + currencyToSymbol(currentCurrency)}</h5>
                 </div>
             </div>
@@ -179,6 +180,8 @@ function updateButton(addButton, quantity) {
     }
 
     addButton.innerText = 'Ajouté (' + quantity + ')';
+
+    console.log(addButton.parent)
 }
 
 // Mettre à jour tous les boutons
@@ -284,8 +287,6 @@ function supSoulignement(event) {
 // COOKIES
 //
 function retrieveCookies() {
-    console.log(localStorage)
-
     // retrouver domaine
     changeDomain(localStorage.getItem('lastSelectedDomain'), false)
 
@@ -317,7 +318,6 @@ function loop(finish) {
 }
 let x=1.
 function animTexte(timeOut) {
-    console.log("test"+x)
     x++;
     clearTimeout(timeOut);
     // récupération du text à animer
