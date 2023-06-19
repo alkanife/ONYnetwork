@@ -115,16 +115,16 @@ function updateBagModal() {
                 <div class="row mb-4 d-flex justify-content-between align-items-center">
                     <div class="col-5">
                       <h5 class="text-black mb-0">${value.name}</h5>
-                      <p>Prix unitaire : ${value.price + currencyToSymbol(currentCurrency)}</p>
-                      <a href="#nuu" onclick="removeFromBag('${key}', 0)">Supprimer du panier</a>  
+                      <p style="margin-bottom: 5px">Prix unitaire : ${value.price + currencyToSymbol(currentCurrency)}</p>
+                      <a href="#nuu" onclick="removeFromBag('${key}', 0)" class="delete-from-bag">Supprimer du panier</a>  
                     </div>
                     
                     <div class="col-2 d-flex">
-                        <p class="mb-0">
-                            <a href="#nu" onclick="removeFromBag('${key}', 1)">- </a>
+                        <h5 class="mb-0">
+                            <a href="#nu" class="bagItemQuantitySelector" onclick="removeFromBag('${key}', 1)">- </a>
                             ${value.quantity}
-                            <a href="#nu" onclick="addToBag(document.getElementById('${'addBag'+key}'), '${key}')"> +</a>
-                        </p>
+                            <a href="#nu" class="bagItemQuantitySelector" onclick="addToBag(document.getElementById('${'addBag'+key}'), '${key}')"> +</a>
+                        </h5>
                     </div>
                     
                     <div class="col-3">

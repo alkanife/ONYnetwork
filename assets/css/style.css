@@ -154,6 +154,10 @@ body {
     color: white;
 }
 
+.card {
+    height: 650px;
+}
+
 .card-body {
     border-left: 1px solid #0c0d29;
     border-right: 1px solid #0c0d29;
@@ -228,6 +232,15 @@ body {
 #navbarContainer {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+#bagBody a {
+    text-decoration: none;
+}
+
+.delete-from-bag {
+    color: #621414;
+    font-size: 0.9rem;
 }
 
 #bagBadge {
