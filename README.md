@@ -10,7 +10,7 @@ Autres contraintes / obligations :
 
 Temps pour réaliser le projet : 50 heures (hors temps additionnel)
 
-La branche principale est celle qui est publiée sur https://arthurbeau.fr/onynetwork. Pour voir la branche du projet, [cliquez ici](https://github.com/alkanife/ONYnetwork/tree/version_projet).
+La branche principale (portfolio-arthur) est celle qui est publiée sur https://arthurbeau.fr/onynetwork. Pour voir l'état du projet tel qu'il a été présenté, [cliquez ici](https://github.com/alkanife/ONYnetwork/tree/version_projet).
 
 Groupe :
 - [Marc Steliga](https://marcsteliga.fr/)

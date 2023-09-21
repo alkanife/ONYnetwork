@@ -8,7 +8,6 @@ window.onload = () => {
     updateBagBadge(); // On met à jour le badge de l'icone du papier
     updateBagModal(); // On met à jour le modal du panier
     updateItemsButtons();
-    recupLien(); /* appel de la focntion d'ajout effet*/
 
     loop();
 }
@@ -248,43 +247,8 @@ function updateBagCookie() {
 
 
 
-
-
-
 //
-// LIEN SOULIGNER
-//
-/*ajout de la fonctionalité de soulignement des liens dans la nav barre*/
-
-/* ajoute des event listener */
-function recupLien() {
-    //récupération des liens
-    let tabLien = document.getElementsByClassName("simpleLink");
-    // ajout des event listener aux boutons
-    for (let i = 0; i < tabLien.length; i++) {
-        tabLien[i].addEventListener("mouseover", (event) => { ajoutSoulignement(event) });
-        tabLien[i].addEventListener("mouseleave", (event) => { supSoulignement(event) });
-    }
-}
-
-/*déclaration des fonctions de suvole des liens*/
-/* ajout du soulignement */
-function ajoutSoulignement(event) {
-    event.target.classList.add("lienSouligner");
-}
-
-/* suppression du soulignement */
-function supSoulignement(event) {
-    event.target.classList.remove("lienSouligner");
-}
-
-
-
-
-
-
-//
-// COOKIES
+// LOCAL STORAGE
 //
 function retrieveCookies() {
     // retrouver domaine
