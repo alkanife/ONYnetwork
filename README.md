@@ -1,6 +1,6 @@
 # Site Internet ONY.network
 
-> La branche principale (portfolio-arthur) est celle qui est publiée sur https://arthurbeau.fr/onynetwork. Pour voir l'état du projet tel qu'il a été présenté, [cliquez ici](https://github.com/alkanife/ONYnetwork/tree/version_projet).
+> La branche principale (portfolio-arthur) est celle qui est publiée sur https://alkanife.dev/onynetwork. Pour voir l'état du projet tel qu'il a été présenté, [cliquez ici](https://github.com/alkanife/ONYnetwork/tree/version_projet).
 
 Projet d'école : faire une fausse page principale d'un site de e-commerce de votre choix. Utilisation obligatoire de Bootstrap 5, de Trello, et Git.
 
